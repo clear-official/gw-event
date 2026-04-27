@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12星座・5月の運勢 | Fortune News</title>
+    <style>
+        :root {
+            --bg-color: #0b0e21;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --accent-color: #ffd700;
+            --text-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0b0e21 0%, #1a1a40 50%, #2e1a47 100%);
+            background-attachment: fixed;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .update-info {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 運勢カードのスタイル */
+        .fortune-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .fortune-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .fortune-card:active {
+            transform: scale(0.98);
+        }
+
+        .sign-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .sign-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .rating {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        /* 鑑定士誘導セクション */
+        .advisor-link {
+            display: block;
+            background: linear-gradient(90deg, #ffd700, #ffa500);
+            color: #000;
+            text-align: center;
+            padding: 12px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>5月の12星座運勢</h1>
+        <p class="update-info">主要占いサイトの平均運勢スコア</p>
+    </header>
+
+    <div class="fortune-grid" id="fortuneGrid">
+        </div>
+
+    <footer>
+        <p>© 2026 Fortune News Service</p>
+    </footer>
+</div>
+
+<script>
+    // 主要サイトを統合した5月の平均運勢データ
+    const fortuneData = [
+        { sign: "牡羊座", star: 4, desc: "行動力が結果に結びつく月。迷わず進んで吉。" },
+        { sign: "牡牛座", star: 5, desc: "12年に一度の幸運期のピーク。自分を信じて。" },
+        { sign: "双子座", star: 3, desc: "準備期間。後半に向けて体力を温存しましょう。" },
+        { sign: "蟹座", star: 4, desc: "対人運が好調。新しい出会いに恵まれる予感。" },
+        { sign: "獅子座", star: 3, desc: "仕事で注目を集める時。丁寧なコミュニケーションを。" },
+        { sign: "乙女座", star: 4, desc: "知的好奇心が旺盛に。学び直しに最適な時期です。" },
+        { sign: "天秤座", star: 2, desc: "無理は禁物。リラックスする時間を大切に。" },
+        { sign: "蠍座", star: 4, desc: "パートナーシップが鍵。深い対話が道を開きます。" },
+        { sign: "射手座", star: 3, desc: "生活習慣を見直すと運気アップ。健康第一で。" },
+        { sign: "山羊座", star: 5, desc: "クリエイティブな才能が開花。楽しむことが大切。" },
+        { sign: "水瓶座", star: 2, desc: "足元を固める時期。家族や身近な人を大切に。" },
+        { sign: "魚座", star: 4, desc: "言葉の力が強まる時。ポジティブな発信を意識して。" }
+    ];
+
+    const advisorUrl = "https://example.com/advisor-profile"; // ここに鑑定士のプロフURLを入力
+
+    const grid = document.getElementById('fortuneGrid');
+
+    fortuneData.forEach(item => {
+        const stars = "⭐".repeat(item.star);
+        const card = document.createElement('div');
+        card.className = 'fortune-card';
+        card.innerHTML = `
+            <div class="sign-header">
+                <span class="sign-name">${item.sign}</span>
+                <span class="rating">${stars}</span>
+            </div>
+            <div class="description">${item.desc}</div>
+            <a href="${advisorUrl}" class="advisor-link">この星座の運勢を詳しく相談する</a>
+        `;
+        grid.appendChild(card);
+    });
+</script>
+
+</body>
+</html>
